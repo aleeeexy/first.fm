@@ -1,0 +1,43 @@
+ # Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Build files
+/build
+/dist
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: ignore package-lock.json if you're using npm
+# package-lock.json
+
+# Optional: ignore yarn.lock if you're using Yarn
+# yarn.lock
+
+# Testing
+/coverage
+
+# Production
+/frontend/build
+
+# Misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

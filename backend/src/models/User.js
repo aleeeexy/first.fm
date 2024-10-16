@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
+  password: { type: String },
+  spotifyId: { type: String, unique: true, sparse: true },
+  spotifyAccessToken: String,
+  spotifyRefreshToken: String,
+  createdAt: { type: Date, default: Date.now },
+  listeningHistory: [{
+    track: { type: mongoose.Schema.Types.ObjectId, ref: 'Track' },
+    listenedAt: { type: Date, default: Date.now }
+  }],
+  spotifyUsername: String,
 });
 
 userSchema.pre('save', async function(next) {
@@ -15,6 +23,4 @@ userSchema.pre('save', async function(next) {
   next();
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
